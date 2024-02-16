@@ -1,4 +1,3 @@
-// #include "esp_freertos_hooks.h"
 #include "esp_system.h"
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
@@ -13,8 +12,6 @@
 #include "lvgl.h"
 #include "lvgl_helpers.h"
 #include "ui.h"
-// #include "lvgl/demos/widgets/lv_demo_widgets.h"
-// #include "lvgl/demos/benchmark/lv_demo_benchmark.h"
 
 /*********************
  *      DEFINES
@@ -94,9 +91,8 @@ static void guiTask(void *pvParameter)
   ESP_ERROR_CHECK(esp_timer_create(&periodic_timer_args, &periodic_timer));
   ESP_ERROR_CHECK(esp_timer_start_periodic(periodic_timer, LV_TICK_PERIOD_MS * 1000));
 
+  /* initializr UI created with lvgl, squareline studo */
   ui_init();
-  // lv_demo_widgets();
-  // lv_demo_benchmark();
 
   while (1)
   {
